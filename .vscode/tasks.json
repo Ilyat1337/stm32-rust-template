@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Cargo Build (debug)",
+      "label": "Build (debug)",
       "type": "process",
       "command": "cargo",
       "args": [
@@ -13,6 +13,18 @@
       "problemMatcher": [
         "$rustc"
       ],
+      "group": {
+        "kind": "build",
+      }
+    },
+    {
+      "label": "Build (release)",
+      "dependsOn": [
+        "Cargo Build (release)",
+        "Create Elf File"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
       "group": {
         "kind": "build",
       }
@@ -28,10 +40,17 @@
       "problemMatcher": [
         "$rustc"
       ],
-      "group": "build"
+      "hide": true
     },
     {
-      "label": "Cargo Clean",
+      "label": "Create Elf File",
+      "type": "shell",
+      "command": "cp ${workspaceRoot}/target/thumbv7m-none-eabi/release/program ${workspaceRoot}/target/thumbv7m-none-eabi/release/program.elf",
+      "problemMatcher": [],
+      "hide": true,
+    },
+    {
+      "label": "Clean",
       "type": "process",
       "command": "cargo",
       "args": [
@@ -41,19 +60,19 @@
       "group": "build"
     },
     {
-      "label": "Upload sketch",
+      "label": "Upload",
       "type": "shell",
       "command": "openocd",
       "args": [
         "-f",
         "board/st_nucleo_f103rb.cfg",
         "-c",
-        "\"program ./target/thumbv7m-none-eabi/release/program verify reset exit\""
+        "\"program ${workspaceRoot}/target/thumbv7m-none-eabi/release/program verify reset exit\""
       ],
       "problemMatcher": [],
       "group": "build",
       "dependsOn": [
-        "Cargo Build (release)"
+        "Build (release)"
       ]
     }
   ]

@@ -20,7 +20,13 @@ name = "program"
 test = false
 bench = false
 
+[profile.dev]
+codegen-units = 1
+debug = true
+lto = false
+
 [profile.release]
-codegen-units = 1 # better optimizations
-debug = true      # symbols are nice and they don't increase the size on Flash
-lto = true        # better optimizations
+codegen-units = 1
+debug = false
+lto = true
+strip = "debuginfo"

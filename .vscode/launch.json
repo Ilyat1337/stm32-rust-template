@@ -10,9 +10,9 @@
       "request": "launch",
       "servertype": "openocd",
       "cwd": "${workspaceRoot}",
-      "preLaunchTask": "Cargo Build (debug)",
+      "preLaunchTask": "Build (debug)",
       "runToEntryPoint": "main",
-      "executable": "./target/thumbv7m-none-eabi/debug/program",
+      "executable": "${workspaceRoot}/target/thumbv7m-none-eabi/debug/program",
       "gdbPath": "gdb-multiarch",
       "device": "STM32F103RBT6",
       "configFiles": [
