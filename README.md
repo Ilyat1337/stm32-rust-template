@@ -4,6 +4,8 @@
 
 Шаблон проекта на языке программирования Rust для микроконтроллера `STM32F103RBT6` (отладочная плата `NUCLEO-F103RB`).
 
+[The Embedded Rust Book](https://docs.rust-embedded.org/book/)
+
 [Примеры программ](https://github.com/stm32-rs/stm32f1xx-hal/tree/master/examples)
 
 ## Установка (Windows)
