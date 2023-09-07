@@ -11,7 +11,7 @@
 ## Установка (Windows)
 
 1. Скачайте и установите [Docker Desktop](https://www.docker.com/products/docker-desktop/).
-2. Склонируйте репозиторий: `git clone https://github.com/Ilyat1337/stm32-rust-template.git`
+2. Склонируйте репозиторий: `git clone https://github.com/Ilyat1337/stm32-rust-template.git`.
 3. Откройте папку в редакторе [VSCode](https://code.visualstudio.com/download).
 4. Нажмите кнопку `Reopen in container` во всплывающем окне или выполните команду `Rebuild and Reopen in Container` (для открытия палитры команд используйте сочетание клавиш `Ctrl + Shift + P`).
 5. Дождитесь окончания загрузки. При первом запуске может потребоваться перезапустить редактор, чтобы корректно загрузились необходимые расширения.
@@ -44,22 +44,19 @@
 
 [Скачайте](https://drive.google.com/file/d/1k3kAo_W2VVj51TY433OwOJsFES-hBG9c/view?usp=drive_link) и установите драйвер для ST-Link.
 
-Чтобы получить доступ к плате изнутри Docker-контейнера, будет использоваться программа `usbipd`. Для её установки в Windows откройте терминал и выполните следующую команду: `winget install --interactive --exact dorssel.usbipd-win`
+Чтобы получить доступ к плате изнутри Docker-контейнера, будет использоваться программа `usbipd`. Для её установки в Windows откройте терминал и выполните следующую команду: `winget install --interactive --exact dorssel.usbipd-win`.
 
 ### Настройка WSL
 
-Установите дистрибутив Ubuntu 22.04 в WSL. Для этого запустите терминал от имени администратора и выполните следующую команду: `wsl --install -d Ubuntu-22.04`. После её выполнения вы подключитесь к WSL. Если этого не произошло, выполните следующую команду: `wsl -d Ubuntu-22.04`.
-
-Сделайте Ubuntu 22.04 дистрибутивом по умолчанию: `wsl.exe --set-default Ubuntu-22.04` (поскольку данная команда выполняется изнутри WSL, необходимо использовать расширение .exe).
-
-Далее выполните команды, необходимые для работы программы usbipd:
+1. Установите дистрибутив Ubuntu 22.04 в WSL. Для этого запустите терминал от имени администратора и выполните следующую команду: `wsl --install -d Ubuntu-22.04`. После её выполнения вы подключитесь к WSL. Если этого не произошло, выполните следующую команду: `wsl -d Ubuntu-22.04`.
+2. Сделайте Ubuntu 22.04 дистрибутивом по умолчанию: `wsl.exe --set-default Ubuntu-22.04` (поскольку данная команда выполняется изнутри WSL, необходимо использовать расширение .exe).
+3. Выполните команды, необходимые для работы программы usbipd:
 ```
 sudo apt update
 sudo apt install linux-tools-virtual hwdata
 sudo update-alternatives --install /usr/local/bin/usbip usbip `ls /usr/lib/linux-tools/*/usbip | tail -n1\` 20
 ```
-
-Отключитесь от WSL: `exit`.
+4. Отключитесь от WSL: `exit`.
 
 ### Настройка Docker Desktop
 
