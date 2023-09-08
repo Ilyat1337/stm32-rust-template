@@ -17,3 +17,7 @@ RUN apt-get install -y openocd
 RUN apt-get install -y gdb-multiarch
 
 RUN rustup target install thumbv7m-none-eabi
+
+RUN cargo install cargo-binutils
+
+RUN rustup component add llvm-tools-preview
